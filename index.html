@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="PhysFlow: Skin tone transfer for remote heart rate estimation through conditional normalizing flows.">
+  <meta name="keywords" content="rPPG, Remote Photoplethysmography, Skin Tone, Data Augmentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhysFlow: Skin tone transfer for remote heart rate estimation through conditional normalizing flows
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">PhysFlow: Skin tone transfer for remote heart rate estimation through conditional normalizing flows</h1>
+			<h2 class="is-size-4 conference-title">BMVC 2024</h2>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+             <span class="author-block">
+                Joaquim Comas<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Antonia Alomar</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Adrià Ruiz</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                Federico Sukno</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Department of Information and Communication Technologies Pompeu Fabra University, Barcelona, Spain,</span>
+              <span class="author-block"><sup>2</sup>Seedtag, Madrid, Spain</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2302.01329.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+            <!-- ArXiv abstract Link -->
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2407.21519" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <center><video id="teaser" preload='auto' autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/output.mp4"
+                type="video/mp4">
+      </video><center>
+      <h2 class="subtitle has-text-centered">
+        Example of skin tone augmentation in UCLA-rPPG dataset. The generated video preserve the same temporal consistency and pulsatile information as original video changing the facial skin tone.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, deep learning methods have shown impressive results for camera-based remote physiological signal estimation, clearly surpassing traditional methods. However, the performance and generalization ability of Deep Neural Networks heavily depends on rich training data truly representing different factors of variation encountered in real applications. Unfortunately, many current remote photoplethysmography (rPPG) datasets lack diversity, particularly in darker skin tones, leading to biased performance of existing rPPG approaches. To mitigate this bias, we introduce PhysFlow, a novel method for augmenting skin diversity in remote heart rate estimation using conditional normalizing flows. PhysFlow adopts end-to-end training optimization, enabling simultaneous training of supervised rPPG approaches on both original and generated data. Additionally, we condition our model using CIELAB color space skin features directly extracted from the facial videos without the need for skin-tone labels. We validate PhysFlow on publicly available datasets, UCLA-rPPG and MMPD, demonstrating reduced heart rate error, particularly in dark skin tones. Furthermore, we demonstrate its versatility and adaptability across different data-driven rPPG methods.
+		  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Skin tone representation</h2>
+        <div class="content has-text-justified">
+          <p>
+            <center><img src="./static/images/Skin_tone.png" 
+              width="900" 
+              height="700" /></center>
+          </p>
+		  <div class="content has-text-justified">
+          <p>
+			Most previous studies have used the Fitzpatrick scale to evaluate or categorize skin tone, dividing it into six levels, from I (lightest) to VI (darkest). In contrast, our skin tone transfer method employs a bi-dimensional representation in the CIELAB color space, which offers three key advantages. First, it eliminates the need for manual annotations, allowing it to be applied to unlabeled data. Second, it simplifies the collection and annotation process for new rPPG datasets. Finally, it accounts for variations in hue as well as lightness, providing a more nuanced representation of skin tone.
+		  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            <center><img src="./static/images/model_PhysFlow.png" 
+              width="900" 
+              height="700" /></center>
+          </p>
+		  <div class="content has-text-justified">
+          <p>
+            A 3D-CNN AE encodes entangled video facial content into a latent embedding. This embedding is then processed by c-CNFs to disentangle the skin tone content. Simultaneously, the rPPG model is iteratively trained using both original and skin tone-augmented data.
+		  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            <center><img src="./static/images/qualitatives_all.png" 
+              width="800" 
+              height="800" /></center>
+			  Visual skin tone diversity data augmentation. We show how PhysFlow is capable of transferring skin tone while preserving the pulsatile wave and the corresponding heart rate in the frequency spectrum from the source and the augmented video.
+            <center><img src="./static/images/skin_subject.png" 
+              width="800" 
+              height="800" /></center>
+			  PhysFlow skin tone diversity data augmentation on the same subject, varying the luminance target value from dark to light skin (0.25 to 0.65).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <div class="content has-text-justified">
+          <p>
+			Our cross-dataset experiments on the MMPD dataset using three different data-driven models demonstrate the capability of PhysFlow for skin tone diversity augmenting in any supervised rPPG, showing how our approach significantly reduces heart rate estimation error, particularly in underrepresented skin tone categories, favoring equitable performance across different skin tones.
+            <center><img src="./static/images/table1.png" 
+              width="1200" 
+              height="800" /></center>
+			  PhysFlow cross-evaluation on darkness skin types of MMPD dataset (beats per minute). 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Skin tone disentanglement</h2>
+        <div class="content has-text-justified">
+          <p>
+            <center><img src="./static/images/t-sne.png" 
+              width="500" 
+              height="500" /></center>
+            t-SNE visualization of the conditioned latent space for different skin tone variations using luminance component. To demonstrate the ability of the c-CNF to disentangle skin tone information from other content, we select six facial video sequence and condition them to specific skin tones. We adjust the luminance term while maintaining a constant hue value, as luminance is the most relevant factor for skin type determination. For visualization purposes, we vary the luminance value from 0.20 to 0.50, covering a range from lighter to darker skin tones. On the left side, the latent space visualization depicts each cluster of points representing the facial video sequence from the six selected subjects. In this visualization, we appreciate how the Physflow through the horizontal dimension (dimension 1) can disentangle the skin tone information after conditioning each facial video to a specific luminance value.  
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{comas2024physflow,
+  title={PhysFlow: Skin tone transfer for remote heart rate estimation through conditional normalizing flows},
+  author={Comas, Joaquim and Alomar, Antonia and Ruiz, Adria and Sukno, Federico},
+  journal={arXiv preprint arXiv:2407.21519},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+<!-- End BibTex citation -->
+
+<!--Acknowledgements -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+  This work is partly supported by the eSCANFace project (PID2020-114083GB-I00) funded by the Spanish Ministry of Science and Innovation.
+  </div>
+</section>
+<!--End Acknowledgements -->
+  
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
